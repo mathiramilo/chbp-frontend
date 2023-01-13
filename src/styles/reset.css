@@ -1,0 +1,58 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reset Input type Submit */
+input[type='submit'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Cursor pointer for Submit buttons, selects, labels and input radios */
+input[type='submit']:hover,
+input[type='file']:hover,
+input[type='radio']:hover,
+select:hover,
+label:hover {
+  cursor: pointer;
+}
+
+/* Scrollbar Customization */
+*::-webkit-scrollbar {
+  width: 2px;
+  background-color: #414141;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffffff86;
+  border-radius: 100%;
+}

@@ -1,7 +1,9 @@
+import AppRoutes from './routes'
+
 function App() {
   return (
     <div className="App">
-      <h1>CHBP App</h1>
+      <AppRoutes />
     </div>
   )
 }
