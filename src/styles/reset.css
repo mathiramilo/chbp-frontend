@@ -11,6 +11,26 @@ html {
   padding: 0;
 }
 
+/* Reset Button Styles */
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Reset Input */
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  outline: none;
+}
+
 /* Reset Input type Submit */
 input[type='submit'] {
   -webkit-appearance: none;

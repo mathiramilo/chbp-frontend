@@ -1,0 +1,17 @@
+.btn {
+  padding: 12px;
+  border-radius: 64px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.btn--principal {
+  background: var(--main-gradient);
+  color: white;
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #000;
+}

@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --main-font: 'Exo', sans-serif;
+
+  --main-color: #f20089;
+
+  --main-gradient: linear-gradient(91.04deg, #f20089 11.05%, #fc367d 87.19%);
+}
