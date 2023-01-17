@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.text {
+  color: var(--text-gray);
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.github-icon {
+  color: var(--text-gray);
+  font-size: 1rem;
+  transition: all 0.3s ease-out;
+}
+
+.link:hover .github-icon {
+  color: var(--main-color);
+}

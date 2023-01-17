@@ -4,6 +4,8 @@
   --main-font: 'Exo', sans-serif;
 
   --main-color: #f20089;
+  --text-black: #555555;
+  --text-gray: #d8d8d8;
 
   --main-gradient: linear-gradient(91.04deg, #f20089 11.05%, #fc367d 87.19%);
 }

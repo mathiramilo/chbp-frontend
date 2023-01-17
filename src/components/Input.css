@@ -13,13 +13,19 @@
   width: 24px;
   height: 24px;
   color: #ccc;
+  transition: all 0.1s ease-out;
 }
 
 .input-field {
   height: 100%;
+  width: 89%;
   padding: 12px 0;
 }
 
 .input-field::placeholder {
   color: #ccc;
+}
+
+.input-container:focus-within .input-icon {
+  color: var(--main-color);
 }

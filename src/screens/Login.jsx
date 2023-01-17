@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import Button from '../components/Button'
-import Logo from '../components/Logo'
-import Input from '../components/Input'
+import { AuthorGithub, Button, Input, Logo } from '../components'
+import './Login.css'
 
 const Login = () => {
   return (
@@ -11,8 +10,10 @@ const Login = () => {
           <div className="ls-left-container">
             <header className="ls-left-header">
               <h2 className="ls-left-header__heading">Welcome to</h2>
-              <Logo width="256" />
-              <p className="ls-left-header__text"></p>
+              <Logo width="168" />
+              <p className="ls-left-header__text">
+                Log in to see all the amazing shoes that we offer
+              </p>
             </header>
 
             <form className="ls-left-form">
@@ -42,16 +43,16 @@ const Login = () => {
               <p className="ls-left-social__text">Continue with social media</p>
               <div className="ls-left-social__options">
                 <button className="ls-left-social__item">
-                  <i className="fa-brands fa-facebook-f"></i>
+                  <i className="fa-brands fa-facebook-f facebook-icon"></i>
                 </button>
                 <button className="ls-left-social__item">
-                  <i className="fa-brands fa-twitter"></i>
+                  <i className="fa-brands fa-twitter twitter-icon"></i>
                 </button>
                 <button className="ls-left-social__item">
-                  <i className="fa-brands fa-google"></i>
+                  <i className="fa-brands fa-google google-icon"></i>
                 </button>
                 <button className="ls-left-social__item">
-                  <i className="fa-brands fa-linkedin-in"></i>
+                  <i className="fa-brands fa-linkedin-in linkedin-icon"></i>
                 </button>
               </div>
             </div>
@@ -60,7 +61,7 @@ const Login = () => {
         <div className="ls-right">
           <div className="ls-right-container">
             <div className="ls-right-content">
-              <Logo variant="white" width="512" />
+              <Logo variant="white" width="216" />
               <p className="ls-right-content__text">
                 At CHBP we look for footwear that is fashionable for you, so our
                 customers know that buying here they will not be disappointed.
@@ -70,6 +71,9 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <footer className="ls-footer">
+        <AuthorGithub />
+      </footer>
     </div>
   )
 }

@@ -1,0 +1,24 @@
+.phone-input__container {
+  width: 100%;
+}
+
+.phone-input__field {
+  width: 100% !important;
+  border-radius: 64px !important;
+  height: 44px !important;
+  padding-left: 54px !important;
+}
+
+.phone-input__button {
+  background-color: white !important;
+  border-radius: 64px 0 0 64px !important;
+  padding: 0 4px !important;
+}
+
+.phone-input__dropdown {
+  border-radius: 0 0 6px 6px !important;
+}
+
+.selected-flag {
+  background-color: transparent !important;
+}

@@ -69,10 +69,10 @@ label:hover {
 /* Scrollbar Customization */
 *::-webkit-scrollbar {
   width: 2px;
-  background-color: #414141;
+  background-color: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #ffffff86;
+  background-color: #c6c6c686;
   border-radius: 100%;
 }

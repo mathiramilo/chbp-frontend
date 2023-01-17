@@ -1,9 +1,11 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import HomeScreen from '../screens/Home'
-import RegisterScreen from '../screens/Register'
-import LoginScreen from '../screens/Login'
-import CategoryScreen from '../screens/Category'
-import CartScreen from '../screens/Cart'
+import {
+  HomeScreen,
+  RegisterScreen,
+  LoginScreen,
+  CartScreen,
+  CategoryScreen
+} from '../screens'
 
 const AppRoutes = () => {
   return (

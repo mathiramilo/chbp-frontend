@@ -1,3 +1,7 @@
+# CHBP E-commerce
+
+ReactJS frontend for the final project of the Coderhouse Backend Course.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
