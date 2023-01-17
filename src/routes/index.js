@@ -10,12 +10,12 @@ import {
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomeScreen />} />
+      <Route path="/" element={<Navigate to="/login" />} />
       <Route path="/register" element={<RegisterScreen />} />
       <Route path="/login" element={<LoginScreen />} />
-      <Route path="/products/:category" element={<CategoryScreen />} />
-      <Route path="/cart" element={<CartScreen />} />
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/products/:category" element={<Navigate to="/login" />} />
+      <Route path="/cart" element={<Navigate to="/login" />} />
+      <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   )
 }
