@@ -1,24 +1,14 @@
-body {
-  margin: 0;
-  overflow-x: hidden;
-}
-
 * {
   font-family: var(--main-font);
 }
 
-img {
-  max-width: 100%;
+/* Scrollbar Customization */
+*::-webkit-scrollbar {
+  width: 2px;
+  background-color: transparent;
 }
 
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-button:hover {
-  cursor: pointer;
+*::-webkit-scrollbar-thumb {
+  background-color: #c6c6c686;
+  border-radius: 100%;
 }

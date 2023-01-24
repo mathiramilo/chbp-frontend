@@ -1,14 +1,31 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
+body {
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
 }
 
 /* Reset Button Styles */
@@ -51,28 +68,19 @@ input[type='number'] {
   appearance: textfield;
 }
 
+/* Reset Select */
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-/* Cursor pointer for Submit buttons, selects, labels and input radios */
+/* Cursor pointer for buttons, selects, labels and input radios */
 input[type='submit']:hover,
 input[type='file']:hover,
 input[type='radio']:hover,
 select:hover,
-label:hover {
+label:hover,
+button:hover {
   cursor: pointer;
-}
-
-/* Scrollbar Customization */
-*::-webkit-scrollbar {
-  width: 2px;
-  background-color: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #c6c6c686;
-  border-radius: 100%;
 }
