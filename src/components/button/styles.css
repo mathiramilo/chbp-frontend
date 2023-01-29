@@ -6,12 +6,12 @@
 }
 
 .btn--principal {
-  background: var(--main-gradient);
-  color: white;
+  background: var(--gradient-principal);
+  color: var(--color-white);
 }
 
 .btn--secondary {
   background-color: transparent;
-  color: #000;
-  border: 1px solid #000;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
 }

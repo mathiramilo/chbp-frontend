@@ -6,17 +6,17 @@
 }
 
 .text {
-  color: var(--text-gray);
-  font-size: 0.8rem;
+  color: var(--color-gray);
+  font-size: var(--font-xs);
   font-weight: 300;
 }
 
 .github-icon {
-  color: var(--text-gray);
-  font-size: 1rem;
+  color: var(--color-gray);
+  font-size: var(--font-sm);
   transition: all 0.3s ease-out;
 }
 
 .link:hover .github-icon {
-  color: var(--main-color);
+  color: var(--color-principal);
 }

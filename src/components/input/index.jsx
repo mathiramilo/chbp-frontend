@@ -1,4 +1,4 @@
-import './Input.css'
+import './styles.css'
 
 const Input = ({ icon, ...props }) => {
   return (

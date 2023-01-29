@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './Button.css'
+import './styles.css'
 
 const Button = ({ text, variant, ...props }) => {
   const [type, setType] = useState('principal')

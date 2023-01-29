@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --font-family: 'Exo', sans-serif;
+  --font-xl: 1.4rem;
+  --font-lg: 1.2rem;
+  --font-md: 1rem;
+  --font-sm: 0.8rem;
+  --font-xs: 0.75rem;
+
+  --color-principal: #f20089;
+  --color-principal-translucid: rgba(242, 0, 137, 0.69);
+  --color-black: #555555;
+  --color-white: #ffffff;
+  --color-gray: #d8d8d8;
+
+  --gradient-principal: linear-gradient(91.04deg, #f20089 11.05%, #fc367d 87.19%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  background-color: var(--color-white);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+select {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+textarea {
+  border: none;
+  outline: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray);
+  border-radius: 100px;
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { PhoneInput, AuthorGithub, Button, Input, Logo } from '../components'
-import './Register.css'
+import { PhoneInput, AuthorGithub, Button, Input, Logo } from '../../components'
+import './styles.css'
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -21,9 +21,7 @@ const Register = () => {
             <header className="rs-left-header">
               <h2 className="rs-left-header__heading">Welcome to</h2>
               <Logo width="168" />
-              <p className="rs-left-header__text">
-                Create an account to start looking for fashionable footwear
-              </p>
+              <p className="rs-left-header__text">Create an account to start looking for fashionable footwear</p>
             </header>
 
             <form className="rs-left-form">
@@ -32,19 +30,13 @@ const Register = () => {
                 <PhoneInput value={phone} setValue={setPhone} />
                 <Input icon="person_2" type="email" placeholder="Email" />
                 <Input icon="lock" type="password" placeholder="Password" />
-                <Input
-                  icon="repeat"
-                  type="password"
-                  placeholder="Repeat Password"
-                />
+                <Input icon="repeat" type="password" placeholder="Repeat Password" />
               </div>
               <Button text="Sign Up" variant="principal" />
             </form>
 
             <div className="rs-left-footer">
-              <span className="rs-left-footer__text">
-                Already have an account?
-              </span>
+              <span className="rs-left-footer__text">Already have an account?</span>
               <Link to="/login">
                 <span className="rs-left-footer__link">Sign In Now</span>
               </Link>
@@ -80,9 +72,8 @@ const Register = () => {
             <div className="rs-right-content">
               <Logo variant="white" width="216" />
               <p className="rs-right-content__text">
-                At CHBP we look for footwear that is fashionable for you, so our
-                customers know that buying here they will not be disappointed.
-                We invite you to look at our catalog!
+                At CHBP we look for footwear that is fashionable for you, so our customers know that buying here they
+                will not be disappointed. We invite you to look at our catalog!
               </p>
             </div>
           </div>

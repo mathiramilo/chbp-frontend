@@ -1,6 +1,6 @@
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import './CustomPhoneInput.css'
+import './styles.css'
 
 const CustomPhoneInput = ({ value, setValue }) => {
   return (
