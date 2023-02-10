@@ -8,6 +8,8 @@
   --font-sm: 0.8rem;
   --font-xs: 0.75rem;
 
+  --container-max-width: 1400px;
+
   --color-principal: #f20089;
   --color-principal-translucid: rgba(242, 0, 137, 0.69);
   --color-black: #555555;
@@ -95,4 +97,14 @@ select:focus {
 ::-webkit-scrollbar-thumb {
   background: var(--color-gray);
   border-radius: 100px;
+}
+
+::selection {
+  background-color: var(--color-principal);
+  color: var(--color-white);
+}
+
+::-moz-selection {
+  background-color: var(--color-principal);
+  color: var(--color-white);
 }
