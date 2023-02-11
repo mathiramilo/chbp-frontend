@@ -1,0 +1,45 @@
+.home-container {
+  width: 95%;
+  max-width: var(--container-max-width);
+  margin: 1.4rem auto;
+}
+
+.home-banner {
+  background: url('../../assets/nike-bg.jpg') no-repeat center center;
+  background-size: cover;
+  height: 24rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.home-banner.nike {
+  background: url('../../assets/nike-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+.home-banner.adidas {
+  background: url('../../assets/adidas-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+.home-banner.puma {
+  background: url('../../assets/puma-bg.webp') no-repeat center center;
+  background-size: cover;
+}
+
+.home-banner__overlay {
+  width: 100%;
+  height: 100%;
+  padding: 1.4rem;
+  background-color: var(--color-principal-translucid);
+}
+
+.home-banner__title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 992px) {
+  .home-container {
+    margin-top: 4rem;
+  }
+}

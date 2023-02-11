@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Logo from '../logo'
 import './styles.css'
@@ -9,17 +10,27 @@ const Navbar = () => {
       <div className="navbar">
         <div className="navbar__top">
           <div className="navbar__logo">
-            <Logo width={144} />
+            <Link to="/">
+              <Logo width={144} />
+            </Link>
           </div>
           <div className="navbar__links">
-            <button className="navbar-links__item">Nike</button>
-            <button className="navbar-links__item">Adidas</button>
-            <button className="navbar-links__item">Puma</button>
+            <Link to="/nike">
+              <button className="navbar-links__item">Nike</button>
+            </Link>
+            <Link to="/adidas">
+              <button className="navbar-links__item">Adidas</button>
+            </Link>
+            <Link to="/puma">
+              <button className="navbar-links__item">Puma</button>
+            </Link>
           </div>
           <div className="navbar__buttons">
-            <button className="navbar-buttons__item">
-              <span className="material-symbols-rounded">shopping_cart</span>
-            </button>
+            <Link to="/cart">
+              <button className="navbar-buttons__item">
+                <span className="material-symbols-rounded">shopping_cart</span>
+              </button>
+            </Link>
             <button className="navbar-buttons__item">
               <span className="material-symbols-rounded">account_circle</span>
             </button>
@@ -29,9 +40,15 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar__links mobile">
-          <button className="navbar-links__item">Nike</button>
-          <button className="navbar-links__item">Adidas</button>
-          <button className="navbar-links__item">Puma</button>
+          <Link to="/nike">
+            <button className="navbar-links__item">Nike</button>
+          </Link>
+          <Link to="/adidas">
+            <button className="navbar-links__item">Adidas</button>
+          </Link>
+          <Link to="/puma">
+            <button className="navbar-links__item">Puma</button>
+          </Link>
         </div>
       </div>
     </header>
