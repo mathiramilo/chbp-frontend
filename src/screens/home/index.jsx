@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { productsServices } from '../../services'
 import { validCategory } from '../../utils'
-import { Navbar, ProductsContainer, ProductsSkeleton } from '../../components'
+import { Footer, Navbar, ProductsContainer, ProductsSkeleton } from '../../components'
 
 import './styles.css'
 
@@ -42,6 +42,7 @@ const Home = () => {
 
         {loading ? <ProductsSkeleton /> : <ProductsContainer products={products} />}
       </div>
+      <Footer />
     </section>
   )
 }

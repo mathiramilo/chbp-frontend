@@ -1,0 +1,185 @@
+.detail-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  margin-bottom: 8rem;
+}
+
+.detail__goback {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.detail__goback .material-symbols-rounded {
+  font-size: 1.6rem;
+  color: var(--color-black);
+}
+
+.detail__goback span:nth-child(2) {
+  font-size: 0.95rem;
+  color: var(--color-black);
+}
+
+.detail__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 1.5rem;
+}
+
+.detail-main__img {
+  position: relative;
+  background: url('../../assets/nike-bg.jpg') no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 1.8rem;
+  overflow: hidden;
+}
+
+.detail-main__img[data-brand='nike'] {
+  background: url('../../assets/nike-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+.detail-main__img[data-brand='adidas'] {
+  background: url('../../assets/adidas-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+.detail-main__img[data-brand='puma'] {
+  background: url('../../assets/puma-bg.webp') no-repeat center center;
+  background-size: cover;
+}
+
+.detail-main-img__overlay {
+  position: absolute;
+  opacity: 0.9;
+  width: 100%;
+  height: 100%;
+}
+
+.detail-main__img img {
+  position: absolute;
+  left: 7%;
+  object-fit: contain;
+  width: 80%;
+  transform: rotate(-30deg);
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.3));
+}
+
+.detail-main__data {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.detail-main-data__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.detail-main-data__heading span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--color-black-variant);
+}
+
+.detail-main-data__heading h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.detail-main-data__price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.detail-main-data__desc {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-black-variant);
+}
+
+.detail-main-data__sizes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.detail-main-data__sizes span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+.detail-main-data-sizes__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.detail-main-data-sizes__options button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+  transition: all 0.12s ease-out;
+}
+
+.detail-main-data__btn {
+  width: 100%;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.7rem 0;
+  border-radius: 100px;
+  margin-top: 1rem;
+  transition: all 0.3s ease-out;
+}
+
+.detail-main-data__btn:disabled {
+  background-color: var(--color-black-variant);
+  color: var(--color-white);
+  cursor: not-allowed;
+}
+
+@media screen and (min-width: 576px) {
+  .detail-main__img {
+    aspect-ratio: 2/1.4;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .detail-container {
+    margin-top: 5rem;
+    margin-bottom: 12rem;
+  }
+
+  .detail__main {
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .detail-main__img {
+    max-width: 440px;
+    aspect-ratio: 1/1;
+  }
+}
+
+@media screen and (min-width: 1134px) {
+  .detail__main {
+    gap: 6rem;
+  }
+}

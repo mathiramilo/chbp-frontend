@@ -4,7 +4,9 @@ const productsServices = {
   getAll: async category => {
     let response
 
-    category ? (response = await axios.get(`/products/${category}`)) : (response = await axios.get(`/products`))
+    category
+      ? (response = await axios.get(`/products?category=${category}`))
+      : (response = await axios.get(`/products`))
 
     const { data: products } = response.data
 

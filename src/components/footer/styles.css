@@ -1,0 +1,140 @@
+.footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  width: 95%;
+  max-width: var(--container-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-bottom: 2rem;
+}
+
+.footer-border {
+  width: 100%;
+  height: 1px;
+  border-radius: 10px;
+  background-color: var(--color-gray);
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-content__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-content__brand p {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-black-variant);
+}
+
+.footer-content__item {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.footer-content__item h3 {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.footer-content__item h3::after {
+  content: '';
+  display: block;
+  width: 25%;
+  height: 1px;
+  background-color: var(--color-gray);
+  margin-top: 0.2rem;
+}
+
+.footer-content__item p {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-black-variant);
+}
+
+.footer-content__item ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 0.6rem;
+}
+
+.footer-content__item ul li {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-black-variant);
+  transition: all 0.1s ease-out;
+}
+
+.footer-content__item ul li:hover {
+  color: var(--color-black);
+}
+
+.footer-author {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.footer-author span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-gray);
+}
+
+.footer-author__icon {
+  width: 1rem;
+  fill: var(--color-gray);
+  transition: all 0.2s ease-out;
+}
+
+.footer-author__icon:hover {
+  fill: var(--color-principal);
+}
+
+@media screen and (min-width: 992px) {
+  .footer-content {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .footer-content__brand {
+    width: 30%;
+  }
+
+  .footer-content__item {
+    width: 12%;
+    margin-top: 1rem;
+  }
+
+  .footer-content__item.project-info {
+    width: 27%;
+  }
+
+  .footer-content__item h3::after {
+    width: 100%;
+  }
+
+  .footer-content__item ul {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 0.4rem;
+  }
+}
