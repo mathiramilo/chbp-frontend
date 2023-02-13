@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import AuthorGithub from '../authorGithub'
 import Logo from '../logo'
-import { ReactComponent as GithubIcon } from '../../assets/github.svg'
 
 import './styles.css'
 
@@ -65,10 +65,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-author">
-          <span>Developed by Mathias Ramilo</span>
-          <a href="https://github.com/mathiramilo" target="_blank" rel="noreferrer">
-            <GithubIcon className="footer-author__icon" />
-          </a>
+          <AuthorGithub />
         </div>
       </div>
     </footer>

@@ -86,27 +86,7 @@
 }
 
 .footer-author {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
   margin-top: 2rem;
-}
-
-.footer-author span {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--color-gray);
-}
-
-.footer-author__icon {
-  width: 1rem;
-  fill: var(--color-gray);
-  transition: all 0.2s ease-out;
-}
-
-.footer-author__icon:hover {
-  fill: var(--color-principal);
 }
 
 @media screen and (min-width: 992px) {

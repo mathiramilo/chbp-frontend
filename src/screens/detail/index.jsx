@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { productsServices } from '../../services'
-import { Footer, Navbar } from '../../components'
+import { useCart } from '../../hooks'
+import { Footer, Navbar, DetailSkeleton } from '../../components'
 
 import './styles.css'
 
@@ -11,12 +12,19 @@ const sizes = [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12]
 const Detail = () => {
   const { id } = useParams()
 
+  const { dispatch } = useCart()
+
   const [product, setProduct] = useState([])
   const [loading, setLoading] = useState([])
 
   const [selectedSize, setSelectedSize] = useState(null)
 
   const navigate = useNavigate()
+
+  const handleAddToCart = () => {
+    dispatch({ type: 'ADD_PRODUCT', payload: { product, size: selectedSize } })
+    navigate('/')
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -38,11 +46,11 @@ const Detail = () => {
       <Navbar />
       <div className="detail-container">
         {loading ? (
-          <h1>Loading...</h1>
+          <DetailSkeleton />
         ) : (
           <>
             <button className="detail__goback" onClick={() => navigate(-1)}>
-              <span class="material-symbols-rounded">keyboard_return</span>
+              <span className="material-symbols-rounded">keyboard_return</span>
               <span>Go back</span>
             </button>
 
@@ -65,8 +73,9 @@ const Detail = () => {
                 <div className="detail-main-data__sizes">
                   <span>Size (US)</span>
                   <div className="detail-main-data-sizes__options">
-                    {sizes.map(size => (
+                    {sizes.map((size, index) => (
                       <button
+                        key={index}
                         onClick={() => setSelectedSize(size)}
                         style={selectedSize === size ? { backgroundColor: '#555555', color: '#ffffff' } : {}}
                       >
@@ -76,7 +85,7 @@ const Detail = () => {
                   </div>
                 </div>
 
-                <button className="detail-main-data__btn" disabled={!selectedSize}>
+                <button className="detail-main-data__btn" disabled={!selectedSize} onClick={handleAddToCart}>
                   {selectedSize ? 'Add to cart' : 'Select a size'}
                 </button>
               </div>

@@ -31,10 +31,25 @@
 }
 
 .navbar-buttons__item {
+  position: relative;
   color: var(--color-black);
 }
 .navbar-buttons__item .material-symbols-rounded {
   font-size: 1.75rem;
+}
+
+.navbar-buttons__item small {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: var(--color-principal);
+  color: var(--color-white);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
 
 .navbar__links {

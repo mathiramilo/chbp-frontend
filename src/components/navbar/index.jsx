@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { useCart } from '../../hooks'
 import Logo from '../logo'
+
 import './styles.css'
 
 const Navbar = () => {
+  const { productsQty } = useCart()
+
   return (
     <header className="navbar-container">
       <div className="navbar">
@@ -28,6 +32,7 @@ const Navbar = () => {
           <div className="navbar__buttons">
             <Link to="/cart">
               <button className="navbar-buttons__item">
+                <small>{productsQty}</small>
                 <span className="material-symbols-rounded">shopping_cart</span>
               </button>
             </Link>

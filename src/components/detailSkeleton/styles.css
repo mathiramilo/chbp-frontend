@@ -1,0 +1,141 @@
+.detail-skeleton-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  margin-bottom: 8rem;
+}
+
+.detail-skeleton__goback {
+  width: 8%;
+  height: 1.2rem;
+  border-radius: 100px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.detail-skeleton__main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 1.5rem;
+}
+
+.detail-skeleton__img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 1.8rem;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.detail-skeleton__data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.detail-skeleton-data__heading {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.detail-skeleton-data__heading span {
+  width: 25%;
+  height: 1.2rem;
+  border-radius: 100px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.detail-skeleton-data__heading div {
+  width: 75%;
+  height: 1.4rem;
+  border-radius: 100px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.detail-skeleton-data__desc {
+  width: 100%;
+  height: 4.4rem;
+  border-radius: 25px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.detail-skeleton-data__sizes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.detail-skeleton-data__sizes span {
+  width: 18%;
+  height: 1.2rem;
+  border-radius: 100px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.detail-skeleton-data-sizes__options {
+  width: 100%;
+  height: 2.4rem;
+  border-radius: 25px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.detail-skeleton-data__btn {
+  width: 50%;
+  height: 3.2rem;
+  border-radius: 25px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: var(--color-gray);
+  }
+  50% {
+    background-color: var(--color-black-variant);
+  }
+  100% {
+    background-color: var(--color-gray);
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .detail-skeleton__img {
+    aspect-ratio: 2/1.4;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .detail-skeleton-container {
+    margin-top: 5rem;
+    margin-bottom: 12rem;
+  }
+
+  .detail-skeleton__main {
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .detail-skeleton__img {
+    max-width: 440px;
+    aspect-ratio: 1/1;
+  }
+}
+
+@media screen and (min-width: 1134px) {
+  .detail-skeleton__main {
+    gap: 6rem;
+  }
+}

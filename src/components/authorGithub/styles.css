@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.2em;
+  gap: 0.8rem;
 }
 
 .text {
@@ -13,7 +13,7 @@
 
 .github-icon {
   color: var(--color-gray);
-  font-size: var(--font-sm);
+  font-size: 0.95rem;
   transition: all 0.3s ease-out;
 }
 

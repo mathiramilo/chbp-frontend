@@ -1,0 +1,100 @@
+.products-skeleton-container {
+  display: grid;
+  grid-template-columns: 100%;
+  column-gap: 1.2rem;
+  row-gap: 4rem;
+  place-items: center;
+  padding: 0 2rem;
+  margin-top: -11rem;
+}
+
+@media screen and (min-width: 668px) {
+  .products-skeleton-container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+    row-gap: 6rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .products-skeleton-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1224px) {
+  .products-skeleton-container {
+    padding: 0 6rem;
+  }
+}
+
+.product-card-skeleton {
+  width: clamp(20px, 100%, 334px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.6rem;
+  background-color: var(--color-white);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-skeleton__top {
+  position: relative;
+  width: 100%;
+  height: 11rem;
+  background-color: var(--color-gray);
+  border-top-left-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+  animation: pulse 2s infinite;
+}
+
+.product-card-skeleton__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.4rem;
+}
+
+.product-card-skeleton__heading {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.product-card-skeleton__heading span {
+  width: 45%;
+  height: 1rem;
+  border-radius: 100px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.product-card-skeleton__heading div {
+  width: 90%;
+  height: 1.6rem;
+  border-radius: 100px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+.product-card-skeleton__btn {
+  width: 75%;
+  height: 2.4rem;
+  border-radius: 100px;
+  background-color: var(--color-gray);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: var(--color-gray);
+  }
+  50% {
+    background-color: var(--color-black-variant);
+  }
+  100% {
+    background-color: var(--color-gray);
+  }
+}
