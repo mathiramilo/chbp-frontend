@@ -81,7 +81,7 @@ const Cart = () => {
           <div className="cart-right__summary">
             <div className="cart-right-summary__item">
               <span>Subtotal ({productsQty} items)</span>
-              <span>US$ {getSubtotal()}</span>
+              <span>US$ {getSubtotal().toFixed(0)}</span>
             </div>
             <div className="cart-right-summary__item">
               <span>Shipping costs</span>
@@ -95,7 +95,7 @@ const Cart = () => {
           <div className="cart-right__total">
             <div>
               <span>Total (Incl. VAT)</span>
-              <h3>US$ {getTotal()}</h3>
+              <h3>US$ {getTotal().toFixed(2)}</h3>
             </div>
             <Button text="Checkout" style={{ padding: '1rem 3rem' }} />
           </div>
