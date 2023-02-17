@@ -16,6 +16,7 @@
   --color-black-variant: #b1b1b1;
   --color-white: #ffffff;
   --color-gray: #d8d8d8;
+  --color-error: #ff4040;
 
   --gradient-principal: linear-gradient(91.04deg, #f20089 11.05%, #fc367d 87.19%);
 }

@@ -102,8 +102,9 @@
 
 .cart-item-data__qty {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.6rem;
+  width: 85px;
 }
 
 .cart-item-data__qty button {

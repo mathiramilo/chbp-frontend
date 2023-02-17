@@ -61,6 +61,25 @@
   text-align: center;
 }
 
+.rs-left-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rs-left-error > span {
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--color-error);
+}
+
+.rs-left-error__text {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--color-error);
+}
+
 .rs-left-form {
   display: flex;
   flex-direction: column;

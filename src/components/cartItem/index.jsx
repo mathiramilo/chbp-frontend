@@ -1,8 +1,21 @@
 import React from 'react'
+import { removeProduct, increaseProduct, decreaseProduct } from '../../context/cart/cart.actions'
 
 import './styles.css'
 
 const CartItem = ({ product, size, qty, dispatch }) => {
+  const handleRemove = () => {
+    dispatch(removeProduct(product._id, size))
+  }
+
+  const handleIncrease = () => {
+    dispatch(increaseProduct(product._id, size))
+  }
+
+  const handleDecrease = () => {
+    dispatch(decreaseProduct(product._id, size))
+  }
+
   return (
     <div className="cart-item">
       <div className="cart-item__left">
@@ -23,20 +36,20 @@ const CartItem = ({ product, size, qty, dispatch }) => {
             </div>
           </div>
           <div className="cart-item-data__qty">
-            <button>
-              <span class="material-symbols-rounded">remove</span>
+            <button onClick={handleDecrease}>
+              <span className="material-symbols-rounded">remove</span>
             </button>
             <span>{qty}</span>
-            <button>
-              <span class="material-symbols-rounded">add</span>
+            <button onClick={handleIncrease}>
+              <span className="material-symbols-rounded">add</span>
             </button>
           </div>
         </div>
       </div>
       <div className="cart-item__right">
         <h3>US$ {(product.price * qty).toFixed(0)}</h3>
-        <button>
-          <span class="material-symbols-rounded">close</span>
+        <button onClick={handleRemove}>
+          <span className="material-symbols-rounded">close</span>
         </button>
       </div>
     </div>

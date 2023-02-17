@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { productsServices } from '../../services'
 import { useCart } from '../../hooks'
+import { addProduct } from '../../context/cart/cart.actions'
 import { Footer, Navbar, DetailSkeleton } from '../../components'
 
 import './styles.css'
@@ -22,7 +23,7 @@ const Detail = () => {
   const navigate = useNavigate()
 
   const handleAddToCart = () => {
-    dispatch({ type: 'ADD_PRODUCT', payload: { product, size: selectedSize } })
+    dispatch(addProduct(product, selectedSize))
     navigate('/')
   }
 

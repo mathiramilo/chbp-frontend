@@ -1,17 +1,74 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { authServices } from '../../services'
 import { PhoneInput, AuthorGithub, Button, Input, Logo } from '../../components'
+import { validEmail } from '../../utils'
+
 import './styles.css'
 
 const Register = () => {
   const [user, setUser] = useState({
     fullName: '',
-    phone: '',
     email: '',
     password: '',
     repeatPassword: ''
   })
   const [phone, setPhone] = useState()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  const navigate = useNavigate()
+
+  const handleRegister = async e => {
+    e.preventDefault()
+
+    const { fullName, email, password, repeatPassword } = user
+    const userPhone = '+' + phone
+
+    if (!(fullName && phone && email && password && repeatPassword)) {
+      setError('Please check that all fields are filled in correctly')
+      setTimeout(() => setError(null), 5000)
+      return
+    }
+
+    if (userPhone.length < 8) {
+      setError('Please check that your phone number is correct')
+      setTimeout(() => setError(null), 5000)
+      return
+    }
+
+    if (!validEmail(email)) {
+      setError('Please check that your email is correct')
+      setTimeout(() => setError(null), 5000)
+      return
+    }
+
+    if (password.length < 6) {
+      setError('Your password must be at least 6 characters long')
+      setTimeout(() => setError(null), 5000)
+      return
+    }
+
+    if (password !== repeatPassword) {
+      setError('Please check that the passwords match')
+      setTimeout(() => setError(null), 5000)
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      const { data } = await authServices.register(fullName, email, password, userPhone)
+      console.log(data)
+      navigate('/')
+    } catch (error) {
+      setError(error.message)
+      setTimeout(() => setError(null), 5000)
+    }
+
+    setLoading(false)
+  }
 
   return (
     <div className="register-screen">
@@ -26,13 +83,49 @@ const Register = () => {
 
             <form className="rs-left-form">
               <div className="rs-left-form__input-group">
-                <Input icon="badge" type="text" placeholder="Full Name" />
+                <Input
+                  icon="badge"
+                  type="text"
+                  placeholder="Full Name"
+                  value={user.fullName}
+                  onChange={e => setUser(prev => ({ ...prev, fullName: e.target.value }))}
+                />
                 <PhoneInput value={phone} setValue={setPhone} />
-                <Input icon="person_2" type="email" placeholder="Email" />
-                <Input icon="lock" type="password" placeholder="Password" />
-                <Input icon="repeat" type="password" placeholder="Repeat Password" />
+                <Input
+                  icon="person_2"
+                  type="email"
+                  placeholder="Email"
+                  value={user.email}
+                  onChange={e => setUser(prev => ({ ...prev, email: e.target.value }))}
+                />
+                <Input
+                  icon="lock"
+                  type="password"
+                  placeholder="Password"
+                  value={user.password}
+                  onChange={e => setUser(prev => ({ ...prev, password: e.target.value }))}
+                />
+                <Input
+                  icon="repeat"
+                  type="password"
+                  placeholder="Repeat Password"
+                  value={user.repeatPassword}
+                  onChange={e => setUser(prev => ({ ...prev, repeatPassword: e.target.value }))}
+                />
               </div>
-              <Button text="Sign Up" variant="principal" />
+
+              {error && (
+                <div className="rs-left-error">
+                  <span className="material-symbols-rounded">error</span>
+                  <p className="rs-left-error__text">{error}</p>
+                </div>
+              )}
+
+              <Button
+                text={loading ? 'Wait a second please...' : 'Sign Up'}
+                variant="principal"
+                onClick={handleRegister}
+              />
             </form>
 
             <div className="rs-left-footer">
