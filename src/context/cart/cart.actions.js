@@ -1,6 +1,15 @@
 import { cartTypes } from './cart.types'
+import { cartServices } from '../../services'
 
-const { ADD_PRODUCT, REMOVE_PRODUCT, INCREASE_PRODUCT, DECREASE_PRODUCT } = cartTypes
+const { SET_CART, ADD_PRODUCT, REMOVE_PRODUCT, INCREASE_PRODUCT, DECREASE_PRODUCT } = cartTypes
+
+export const setCart = async (cartId, token) => {
+  const cart = await cartServices.getProducts(cartId, token)
+  return {
+    type: SET_CART,
+    payload: cart
+  }
+}
 
 export const addProduct = (product, size) => {
   return {
@@ -9,23 +18,23 @@ export const addProduct = (product, size) => {
   }
 }
 
-export const removeProduct = (id, size) => {
+export const removeProduct = (prodId, size) => {
   return {
     type: REMOVE_PRODUCT,
-    payload: { id, size }
+    payload: { prodId, size }
   }
 }
 
-export const increaseProduct = (id, size) => {
+export const increaseProduct = (prodId, size) => {
   return {
     type: INCREASE_PRODUCT,
-    payload: { id, size }
+    payload: { prodId, size }
   }
 }
 
-export const decreaseProduct = (id, size) => {
+export const decreaseProduct = (prodId, size) => {
   return {
     type: DECREASE_PRODUCT,
-    payload: { id, size }
+    payload: { prodId, size }
   }
 }

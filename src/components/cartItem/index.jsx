@@ -1,19 +1,27 @@
 import React from 'react'
+
+import { useAuth } from '../../hooks'
+import { cartServices } from '../../services'
 import { removeProduct, increaseProduct, decreaseProduct } from '../../context/cart/cart.actions'
 
 import './styles.css'
 
 const CartItem = ({ product, size, qty, dispatch }) => {
-  const handleRemove = () => {
+  const { user, token } = useAuth()
+
+  const handleRemove = async () => {
     dispatch(removeProduct(product._id, size))
+    await cartServices.removeProduct(user.cartId, product._id, size, token)
   }
 
-  const handleIncrease = () => {
+  const handleIncrease = async () => {
     dispatch(increaseProduct(product._id, size))
+    await cartServices.addProduct(user.cartId, product._id, size, token)
   }
 
-  const handleDecrease = () => {
+  const handleDecrease = async () => {
     dispatch(decreaseProduct(product._id, size))
+    await cartServices.decreaseProduct(user.cartId, product._id, size, token)
   }
 
   return (

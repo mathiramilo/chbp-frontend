@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { useAuth } from '../../hooks'
 import { authServices } from '../../services'
 import { PhoneInput, AuthorGithub, Button, Input, Logo } from '../../components'
 import { validEmail } from '../../utils'
@@ -17,6 +18,8 @@ const Register = () => {
   const [phone, setPhone] = useState()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+
+  const { setUser: setGlobalUser, setToken } = useAuth()
 
   const navigate = useNavigate()
 
@@ -60,7 +63,8 @@ const Register = () => {
 
     try {
       const { data } = await authServices.register(fullName, email, password, userPhone)
-      console.log(data)
+      setGlobalUser(data.user)
+      setToken(data.token)
       navigate('/')
     } catch (error) {
       setError(error.message)

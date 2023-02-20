@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
+import { useAuth } from '../../hooks'
 import { productsServices } from '../../services'
 import { validCategory } from '../../utils'
 import { Footer, Navbar, ProductsContainer, ProductsSkeleton } from '../../components'
@@ -9,6 +10,8 @@ import './styles.css'
 
 const Home = () => {
   const { category } = useParams()
+
+  const { token } = useAuth()
 
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
@@ -21,7 +24,7 @@ const Home = () => {
     if (!validCategory(category)) return navigate('/')
 
     const fetchProducts = async () => {
-      const products = await productsServices.getAll(category)
+      const products = await productsServices.getAll(category, token)
 
       setProducts(products)
       setLoading(false)

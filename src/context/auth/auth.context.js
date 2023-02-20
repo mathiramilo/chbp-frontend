@@ -4,16 +4,28 @@ export const AuthContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [token, setToken] = useState(null)
 
   useEffect(() => {
-    const userId = localStorage.getItem('userId')
+    const user = JSON.parse(localStorage.getItem('user'))
+    const token = JSON.parse(localStorage.getItem('token'))
 
-    if (userId) {
-      setUser(userId)
+    if (user) {
+      setUser(user)
+    }
+    if (token) {
+      setToken(token)
     }
   }, [])
 
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('token', JSON.stringify(token))
+  }, [user, token])
+
   return (
-    <AuthContext.Provider value={useMemo(() => ({ user, setUser }), [user, setUser])}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={useMemo(() => ({ user, setUser, token, setToken }), [user, setUser, token, setToken])}>
+      {children}
+    </AuthContext.Provider>
   )
 }

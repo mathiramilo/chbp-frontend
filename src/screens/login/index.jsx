@@ -1,8 +1,49 @@
-import { Link } from 'react-router-dom'
+import { useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { useAuth } from '../../hooks'
 import { AuthorGithub, Button, Input, Logo } from '../../components'
+import { authServices } from '../../services'
+
 import './styles.css'
 
 const Login = () => {
+  const { setUser, setToken } = useAuth()
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  const form = useRef(null)
+
+  const navigate = useNavigate()
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+
+    const email = form.current.email.value
+    const password = form.current.password.value
+
+    if (!email || !password) {
+      setError('Please check that all fields are filled in correctly')
+      setTimeout(() => setError(null), 5000)
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      const { data } = await authServices.login(email, password)
+      setUser(data.user)
+      setToken(data.token)
+      navigate('/')
+    } catch (error) {
+      setError(error.message)
+      setTimeout(() => setError(null), 5000)
+    }
+
+    setLoading(false)
+  }
+
   return (
     <div className="login-screen">
       <div className="ls-container">
@@ -14,12 +55,20 @@ const Login = () => {
               <p className="ls-left-header__text">Log in to see all the amazing shoes that we offer</p>
             </header>
 
-            <form className="ls-left-form">
+            <form ref={form} className="ls-left-form" onSubmit={handleSubmit}>
               <div className="ls-left-form__input-group">
-                <Input icon="person_2" type="email" placeholder="Email" />
-                <Input icon="lock" type="password" placeholder="Password" />
+                <Input name="email" icon="person_2" type="email" placeholder="Email" />
+                <Input name="password" icon="lock" type="password" placeholder="Password" />
               </div>
-              <Button text="Sign In" variant="principal" />
+
+              {error && (
+                <div className="rs-left-error">
+                  <span className="material-symbols-rounded">error</span>
+                  <p className="rs-left-error__text">{error}</p>
+                </div>
+              )}
+
+              <Button text={loading ? 'Wait a second please...' : 'Sign In'} variant="principal" />
             </form>
 
             <div className="ls-left-footer">

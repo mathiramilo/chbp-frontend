@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import { productsServices } from '../../services'
-import { useCart } from '../../hooks'
+import { productsServices, cartServices } from '../../services'
+import { useAuth, useCart } from '../../hooks'
 import { addProduct } from '../../context/cart/cart.actions'
 import { Footer, Navbar, DetailSkeleton } from '../../components'
 
@@ -13,6 +13,7 @@ const sizes = [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12]
 const Detail = () => {
   const { id } = useParams()
 
+  const { user, token } = useAuth()
   const { dispatch } = useCart()
 
   const [product, setProduct] = useState([])
@@ -22,16 +23,17 @@ const Detail = () => {
 
   const navigate = useNavigate()
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     dispatch(addProduct(product, selectedSize))
     navigate('/')
+    await cartServices.addProduct(user.cartId, product._id, selectedSize, token)
   }
 
   useEffect(() => {
     setLoading(true)
 
     const fetchProduct = async () => {
-      const product = await productsServices.getById(id)
+      const product = await productsServices.getById(id, token)
 
       if (!product) return navigate('/')
 

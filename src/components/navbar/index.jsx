@@ -1,13 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { useCart } from '../../hooks'
+import { useAuth, useCart } from '../../hooks'
 import Logo from '../logo'
 
 import './styles.css'
 
 const Navbar = () => {
   const { productsQty } = useCart()
+  const { user, setUser, setToken } = useAuth()
+
+  const handleLogout = () => {
+    setUser(null)
+    setToken(null)
+  }
 
   return (
     <header className="navbar-container">
@@ -39,7 +45,7 @@ const Navbar = () => {
             <button className="navbar-buttons__item">
               <span className="material-symbols-rounded">account_circle</span>
             </button>
-            <button className="navbar-buttons__item">
+            <button className="navbar-buttons__item" onClick={handleLogout}>
               <span className="material-symbols-rounded">logout</span>
             </button>
           </div>
