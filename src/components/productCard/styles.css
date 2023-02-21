@@ -60,6 +60,8 @@
   text-transform: uppercase;
   text-align: center;
   color: var(--color-black);
+  max-height: 32px;
+  overflow: hidden;
 }
 
 .product-card__desc {
@@ -68,6 +70,8 @@
   text-align: center;
   text-overflow: ellipsis;
   color: var(--color-black);
+  max-height: 55px;
+  overflow: hidden;
 }
 
 .product-card__btn {

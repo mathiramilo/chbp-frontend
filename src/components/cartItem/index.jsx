@@ -28,9 +28,8 @@ const CartItem = ({ product, size, qty, dispatch }) => {
     <div className="cart-item">
       <div className="cart-item__left">
         <div className="cart-item__img" data-brand={product.category}>
-          <div className="cart-item-img__overlay" style={{ background: product.color }}>
-            <img src={product.imgUrl} alt={product.title} />
-          </div>
+          <div className="cart-item-img__overlay" style={{ background: product.color }}></div>
+          <img src={product.imgUrl} alt={product.title} />
         </div>
 
         <div className="cart-item__data">
