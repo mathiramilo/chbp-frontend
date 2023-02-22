@@ -4,9 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { productsServices, cartServices } from '../../services'
 import { useAuth, useCart } from '../../hooks'
 import { addProduct } from '../../context/cart/cart.actions'
-import { Footer, Navbar, DetailSkeleton } from '../../components'
+import { Footer, Navbar, DetailSkeleton, AddToCartToast } from '../../components'
 
 import './styles.css'
+import { toast } from 'react-hot-toast'
 
 const sizes = [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12]
 
@@ -25,12 +26,14 @@ const Detail = () => {
 
   const handleAddToCart = async () => {
     dispatch(addProduct(product, selectedSize))
+    toast.custom(t => <AddToCartToast product={product} size={selectedSize} />)
     navigate('/')
     await cartServices.addProduct(user.cartId, product._id, selectedSize, token)
   }
 
   useEffect(() => {
     setLoading(true)
+    window.scrollTo(0, 0)
 
     const fetchProduct = async () => {
       const product = await productsServices.getById(id, token)

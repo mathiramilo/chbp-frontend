@@ -1,0 +1,135 @@
+.product-added-toast {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem;
+  background-color: var(--color-white);
+  border-radius: 0.4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  animation: toast 0.3s ease-out;
+  transition: all 0.3 ease-out;
+}
+
+.product-added-toast.animate-leaving {
+  transform: translateY(100%);
+}
+
+@keyframes toast {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.product-added-toast__img {
+  position: relative;
+  background: url('../../assets/nike-bg.jpg') no-repeat center center;
+  background-size: cover;
+  width: 110px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.product-added-toast__img[data-brand='nike'] {
+  background: url('../../assets/nike-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+.product-added-toast__img[data-brand='adidas'] {
+  background: url('../../assets/adidas-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+.product-added-toast__img[data-brand='puma'] {
+  background: url('../../assets/puma-bg.webp') no-repeat center center;
+  background-size: cover;
+}
+
+.product-added-toast-img__overlay {
+  position: absolute;
+  opacity: 0.9;
+  width: 100%;
+  height: 100%;
+}
+
+.product-added-toast__img img {
+  position: absolute;
+  left: 7%;
+  object-fit: contain;
+  width: 80%;
+  transform: rotate(-30deg);
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.3));
+}
+
+.product-added-toast__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.product-added-toast-info__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.product-added-toast-info-item__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.product-added-toast-info-item__heading span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-black-variant);
+  text-transform: uppercase;
+}
+
+.product-added-toast-info-item__heading h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-black);
+  text-transform: uppercase;
+}
+
+.product-added-toast-info-item__size {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-black);
+  width: 32px;
+  aspect-ratio: 1/1;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--color-white);
+  border-radius: 3px;
+}
+
+.product-added-toast-info__item > span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.product-added-toast-info-item__msg {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.product-added-toast-info-item__msg span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+.product-added-toast-info-item__msg .material-symbols-rounded {
+  color: var(--color-success);
+  font-size: 1rem;
+}

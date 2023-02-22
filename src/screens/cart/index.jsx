@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { useCart } from '../../hooks'
 import { Button, CartList } from '../../components'
@@ -97,7 +97,13 @@ const Cart = () => {
               <span>Total (Incl. VAT)</span>
               <h3>US$ {getTotal().toFixed(2)}</h3>
             </div>
-            <Button text="Checkout" style={{ padding: '1rem 3rem' }} />
+            {productsQty === 0 ? (
+              <Link to="/">
+                <Button text="Look Sneakers" style={{ padding: '1rem 3rem' }} />
+              </Link>
+            ) : (
+              <Button text="Checkout" style={{ padding: '1rem 3rem' }} />
+            )}
           </div>
         </div>
       </div>

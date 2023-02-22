@@ -10,3 +10,25 @@
 .cart-list::-webkit-scrollbar {
   width: 5px;
 }
+
+.cart-list__empty {
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.95rem;
+  color: var(--color-black);
+}
+
+.cart-list__empty .material-symbols-rounded {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-principal);
+}
+
+@media screen and (min-width: 1024px) {
+  .cart-list__empty {
+    height: 400px;
+  }
+}
