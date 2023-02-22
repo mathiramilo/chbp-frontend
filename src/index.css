@@ -89,6 +89,10 @@ select:focus {
   outline: none;
 }
 
+hr {
+  border: none;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

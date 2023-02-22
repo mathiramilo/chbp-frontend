@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from 'react'
 
 import './styles.css'
 
-const Modal = ({ open, setOpen, children, containerStyle, modalStyle, ...props }) => {
+const Modal = ({ open, setOpen, children, containerStyle, modalStyle, disableClickOutsideClose, ...props }) => {
   const modal = useRef(null)
 
   useEffect(() => {
     const handleClick = e => {
-      if (modal.current.contains(e.target)) {
-        return
-      }
+      if (disableClickOutsideClose) return
+
+      if (modal.current.contains(e.target)) return
 
       setOpen(false)
     }
@@ -21,7 +21,7 @@ const Modal = ({ open, setOpen, children, containerStyle, modalStyle, ...props }
     return () => {
       document.removeEventListener('mousedown', handleClick)
     }
-  }, [modal, open, setOpen])
+  }, [modal, open, setOpen, disableClickOutsideClose])
 
   return (
     <div className={open ? 'modal-container open' : 'modal-container'} style={containerStyle} {...props}>

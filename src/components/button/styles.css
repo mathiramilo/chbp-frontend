@@ -15,3 +15,9 @@
   color: var(--color-black);
   border: 1px solid var(--color-black);
 }
+
+.btn--disabled {
+  background-color: var(--color-gray);
+  color: var(--color-white);
+  cursor: not-allowed;
+}

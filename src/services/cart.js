@@ -67,6 +67,27 @@ const cartServices = {
     } catch (error) {
       throw new Error('An error occurred. Please try again later')
     }
+  },
+  checkout: async (cartId, buyer, token) => {
+    try {
+      const response = await axios.post(
+        `/cart/${cartId}/checkout`,
+        {
+          name: buyer.name,
+          email: buyer.email,
+          phone: buyer.phone
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      const { data } = response.data
+      return data
+    } catch (error) {
+      throw new Error('An error occurred. Please try again later')
+    }
   }
 }
 

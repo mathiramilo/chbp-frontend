@@ -14,6 +14,10 @@ const Button = ({ text, variant, ...props }) => {
         setType('secondary')
         break
 
+      case 'disabled':
+        setType('disabled')
+        break
+
       default:
         setType('principal')
         break
