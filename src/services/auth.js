@@ -26,7 +26,7 @@ const authServices = {
 
   login: async (email, password) => {
     try {
-      const response = await axios.post('/auth/login', {
+      const response = await axios.post('https://chbp-api.up.railway.app/api/auth/login', {
         email,
         password
       })
