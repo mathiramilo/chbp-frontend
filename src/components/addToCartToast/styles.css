@@ -10,10 +10,6 @@
   transition: all 0.3 ease-out;
 }
 
-.product-added-toast.animate-leaving {
-  transform: translateY(100%);
-}
-
 @keyframes toast {
   0% {
     transform: translateY(-100%);

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import { cartServices } from '../../services'
 import { useAuth, useCart } from '../../hooks'
 import { setCart } from '../../context/cart/cart.actions'
-import { BillingModal, Button, CartList } from '../../components'
+import { BillingModal, Button, CartList, CheckoutToast } from '../../components'
 import { ReactComponent as CheckoutFigure } from '../../assets/checkout-figure.svg'
 import { ReactComponent as MasterIcon } from '../../assets/master-icon.svg'
 import { ReactComponent as VisaIcon } from '../../assets/visa-icon.svg'
@@ -40,16 +41,31 @@ const Cart = () => {
   const navigate = useNavigate()
 
   const handleCheckout = async () => {
-    const buyerInfo = {
+    const buyerPayload = {
       name: user.fullName,
       email: user.email,
       phone: user.phone
     }
 
+    const addressPayload = {
+      address: address.address,
+      city: address.city,
+      country: address.country
+    }
+
+    const paymentPayload = {
+      cardNumber: +card.number,
+      cardHolder: card.fullName,
+      expirationDate: card.expDate,
+      cvv: +card.cvv
+    }
+
     setLoading(true)
 
     try {
-      await cartServices.checkout(user.cartId, buyerInfo, token)
+      const { order } = await cartServices.checkout(user.cartId, buyerPayload, addressPayload, paymentPayload, token)
+      const { _id, totalCost } = order
+      toast.custom(t => <CheckoutToast orderId={_id} total={totalCost} />)
       dispatch(await setCart(user.cartId, token))
       navigate('/')
     } catch (error) {
