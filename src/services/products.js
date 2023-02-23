@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { API_URL } from '../config'
 
 const productsServices = {
   getAll: async (category, token) => {
@@ -6,7 +7,7 @@ const productsServices = {
       let response
 
       category
-        ? (response = await axios.get(`/products?category=${category}`, {
+        ? (response = await axios.get(`${API_URL}/products?category=${category}`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -26,7 +27,7 @@ const productsServices = {
   },
   getById: async (id, token) => {
     try {
-      const response = await axios.get(`/products/${id}`, {
+      const response = await axios.get(`${API_URL}/products/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

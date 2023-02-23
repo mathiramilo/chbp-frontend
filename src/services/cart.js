@@ -1,9 +1,10 @@
 import axios from 'axios'
+import { API_URL } from '../config'
 
 const cartServices = {
   getProducts: async (cartId, token) => {
     try {
-      const response = await axios.get(`/cart/${cartId}/products`, {
+      const response = await axios.get(`${API_URL}/cart/${cartId}/products`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -17,7 +18,7 @@ const cartServices = {
   addProduct: async (cartId, productId, size, token) => {
     try {
       const response = await axios.post(
-        `/cart/${cartId}/products/${productId}`,
+        `${API_URL}/cart/${cartId}/products/${productId}`,
         {
           size
         },
@@ -35,7 +36,7 @@ const cartServices = {
   },
   removeProduct: async (cartId, productId, size, token) => {
     try {
-      const response = await axios.delete(`/cart/${cartId}/products/${productId}`, {
+      const response = await axios.delete(`${API_URL}/cart/${cartId}/products/${productId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         },
@@ -52,7 +53,7 @@ const cartServices = {
   decreaseProduct: async (cartId, productId, size, token) => {
     try {
       const response = await axios.put(
-        `/cart/${cartId}/products/${productId}/decrease`,
+        `${API_URL}/cart/${cartId}/products/${productId}/decrease`,
         {
           size
         },
@@ -71,7 +72,7 @@ const cartServices = {
   checkout: async (cartId, buyer, address, payment, token) => {
     try {
       const response = await axios.post(
-        `/cart/${cartId}/checkout`,
+        `${API_URL}/cart/${cartId}/checkout`,
         {
           buyer,
           address,

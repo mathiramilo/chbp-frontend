@@ -1,9 +1,10 @@
 import axios from 'axios'
+import { API_URL } from '../config'
 
 const authServices = {
   register: async (fullName, email, password, phone) => {
     try {
-      const response = await axios.post('/auth/register', {
+      const response = await axios.post(`${API_URL}/auth/register`, {
         fullName,
         email,
         password,
@@ -26,7 +27,7 @@ const authServices = {
 
   login: async (email, password) => {
     try {
-      const response = await axios.post('https://chbp-api.up.railway.app/api/auth/login', {
+      const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password
       })
