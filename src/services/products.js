@@ -12,7 +12,7 @@ const productsServices = {
               Authorization: `Bearer ${token}`
             }
           }))
-        : (response = await axios.get(`/products`, {
+        : (response = await axios.get(`${API_URL}/products`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
