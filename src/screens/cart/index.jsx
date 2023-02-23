@@ -177,6 +177,7 @@ const Cart = () => {
                 </Link>
               ) : (
                 <Button
+                  disabled={!address.address || !card.number || loading}
                   text={loading ? 'Wait a bit...' : 'Checkout'}
                   variant={address.address ? 'principal' : 'disabled'}
                   style={{ padding: '1rem 3rem' }}
