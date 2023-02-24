@@ -190,7 +190,7 @@ const BillingModal = ({ open, setOpen, address, card, setAddress, setCard }) => 
             </div>
           )}
 
-          <Button type="submit" text="Save Billing Info" />
+          <Button type="submit" text="Continue" />
         </form>
       </div>
     </Modal>

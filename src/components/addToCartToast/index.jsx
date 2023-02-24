@@ -1,10 +1,11 @@
 import React from 'react'
+import { toast } from 'react-hot-toast'
 
 import './styles.css'
 
-const AddToCartToast = ({ product, size }) => {
+const AddToCartToast = ({ t, product, size }) => {
   return (
-    <div className="product-added-toast">
+    <div className="product-added-toast" onClick={() => toast.dismiss(t.id)}>
       <div className="product-added-toast__img" data-brand={product.category}>
         <div className="product-added-toast-img__overlay" style={{ backgroundColor: product.color }}></div>
         <img src={product.imgUrl} alt={product.title} />

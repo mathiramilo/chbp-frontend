@@ -65,7 +65,7 @@ const Cart = () => {
     try {
       const { order } = await cartServices.checkout(user.cartId, buyerPayload, addressPayload, paymentPayload, token)
       const { _id, totalCost } = order
-      toast.custom(t => <CheckoutToast orderId={_id} total={totalCost} />)
+      toast.custom(t => <CheckoutToast t={t} orderId={_id} total={totalCost} />)
       dispatch(await setCart(user.cartId, token))
       navigate('/')
     } catch (error) {

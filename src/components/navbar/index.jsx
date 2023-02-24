@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useAuth, useCart } from '../../hooks'
-import Modal from '../modal'
+import UserModal from '../userModal'
 import Logo from '../logo'
 
 import './styles.css'
@@ -68,33 +68,7 @@ const Navbar = () => {
         </div>
       </header>
 
-      <Modal open={modalOpen} setOpen={setModalOpen} modalStyle={{ width: '75%', maxWidth: '386px' }}>
-        <div className="modal-content">
-          <button className="modal__close-btn">
-            <span className="material-symbols-rounded" onClick={() => setModalOpen(false)}>
-              close
-            </span>
-          </button>
-          <div className="modal__full-name">
-            <span className="material-symbols-rounded">account_circle</span>
-            <span>{user?.fullName}</span>
-          </div>
-          <div className="modal__info">
-            <div className="modal-info__item">
-              <span className="material-symbols-rounded">person_2</span>
-              <span>Email: {user?.email}</span>
-            </div>
-            <div className="modal-info__item">
-              <span className="material-symbols-rounded">phone_iphone</span>
-              <span>Phone: {user?.phone}</span>
-            </div>
-          </div>
-          <button className="modal__btn" onClick={handleLogout}>
-            <span>Logout</span>
-            <span className="material-symbols-rounded">logout</span>
-          </button>
-        </div>
-      </Modal>
+      <UserModal open={modalOpen} setOpen={setModalOpen} user={user} handleLogout={handleLogout} />
     </>
   )
 }

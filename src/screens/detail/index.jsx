@@ -26,7 +26,7 @@ const Detail = () => {
 
   const handleAddToCart = async () => {
     dispatch(addProduct(product, selectedSize))
-    toast.custom(t => <AddToCartToast product={product} size={selectedSize} />)
+    toast.custom(t => <AddToCartToast t={t} product={product} size={selectedSize} />)
     navigate('/')
     await cartServices.addProduct(user.cartId, product._id, selectedSize, token)
   }
