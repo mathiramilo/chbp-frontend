@@ -5,19 +5,15 @@ import './styles.css'
 
 const OrderItem = ({ order }) => {
   return (
-    <div className='order-item'>
-        <h2>Order Item</h2>
-        <br />
-        <span>ID: {order._id}</span>
-        <br />
-        <span>USD {order.totalCost.toFixed(2)}</span>
-        <br />
-        <br />
-
-        <Link to={`/orders/${order._id}`}>
-          <button>View Detail</button>
-        </Link>
-    </div>
+    <Link to={`/orders/${order._id}`}>
+      <div className="order-item">
+        <h5>{new Date(order.timestamp).toLocaleString()}</h5>
+        <span>
+          {order.address.address} | {order.address.city} | {order.address.country}
+        </span>
+        <h4>US$ {order.totalCost.toFixed(2)}</h4>
+      </div>
+    </Link>
   )
 }
 

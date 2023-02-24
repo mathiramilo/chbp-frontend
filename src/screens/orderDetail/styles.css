@@ -1,0 +1,6 @@
+.order-detail-container {
+  width: 95%;
+  max-width: var(--container-max-width);
+  margin: 1.4rem auto;
+  margin-bottom: 8rem;
+}

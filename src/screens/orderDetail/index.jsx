@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { Navbar } from '../../components'
+import { Footer, Navbar } from '../../components'
 import { useAuth } from '../../hooks'
 import { ordersServices } from '../../services'
 
@@ -21,7 +21,7 @@ const OrderDetail = () => {
 
     const fetchOrder = async () => {
       const order = await ordersServices.getById(id, token)
-      
+
       setOrder(order)
       setLoading(false)
     }
@@ -30,18 +30,17 @@ const OrderDetail = () => {
   }, [])
 
   return (
-    <div className='order-detail-screen'>
+    <section className="order-detail-screen">
       <Navbar />
-      <br />
-      <br />
-      <h1>Order Detail</h1>
-      <br />
-      {loading ? (
-        <h4>Please wait, getting your order...</h4>
-      ) : (
-        <h4>ID: {order?._id}</h4>
-      )}
-    </div>
+      <div className="order-detail-container">
+        <br />
+        <br />
+        <h1>Order Detail</h1>
+        <br />
+        {loading ? <h4>Please wait, getting your order...</h4> : <h4>ID: {order?._id}</h4>}
+      </div>
+      <Footer />
+    </section>
   )
 }
 
