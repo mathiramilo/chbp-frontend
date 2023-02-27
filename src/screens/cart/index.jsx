@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
+import { setCart } from '../../context/cart/cart.actions'
+
 import { cartServices } from '../../services'
 import { useAuth, useCart } from '../../hooks'
-import { setCart } from '../../context/cart/cart.actions'
+import { showLast4Digits } from '../../utils'
+
 import { BillingModal, Button, CartList, CheckoutToast } from '../../components'
 import { ReactComponent as CheckoutFigure } from '../../assets/checkout-figure.svg'
 import { ReactComponent as MasterIcon } from '../../assets/master-icon.svg'
@@ -30,11 +33,6 @@ const Cart = () => {
   })
 
   const [loading, setLoading] = useState(false)
-
-  const showLast4Digits = number => {
-    const last4Digits = number.slice(-4)
-    return `•••• •••• •••• ${last4Digits}`
-  }
 
   const [modalOpen, setModalOpen] = useState(false)
 

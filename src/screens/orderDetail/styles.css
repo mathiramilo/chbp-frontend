@@ -4,3 +4,144 @@
   margin: 1.4rem auto;
   margin-bottom: 8rem;
 }
+
+.order-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  background-color: var(--color-white);
+  border-radius: 0.6rem;
+  width: 92%;
+  margin: 0 auto;
+  margin-top: -14rem;
+  padding: 1.4rem;
+  padding-bottom: 3rem;
+  box-shadow: 0px 4px 50px -10px rgba(0, 0, 0, 0.25);
+}
+
+.order-detail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.order-detail__user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.order-detail__user span {
+  font-size: 2.4rem;
+  color: var(--color-black);
+}
+
+.order-detail__user h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.order-detail__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
+.order-detail__price h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.order-detail__price span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-principal);
+}
+
+.order-detail__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #f6f6f6;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  margin-bottom: 3rem;
+}
+
+.order-detail-info__left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.order-detail-info-left__item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.order-detail-info-left__item .material-symbols-rounded {
+  font-size: 1.2rem;
+  color: var(--color-principal);
+}
+
+.order-detail-info-left__item span:nth-child(2) {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.order-detail-info__right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.order-detail-info__right span {
+  font-size: 0.95rem;
+  color: var(--color-black);
+}
+
+.order-detail-info__right div {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.order-detail__products {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+@media screen and (min-width: 780px) {
+  .order-detail__info {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .order-detail-info__right {
+    flex-basis: 240px;
+    align-items: flex-end;
+  }
+
+  .order-detail__products {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .order-detail {
+    padding: 4rem 3rem;
+  }
+}

@@ -36,6 +36,7 @@
 .home-banner__title {
   font-size: 1.8rem;
   font-weight: 600;
+  text-transform: uppercase;
   color: var(--color-white);
 }
 

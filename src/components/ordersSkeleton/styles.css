@@ -1,0 +1,28 @@
+.orders-skeleton-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  width: 100%;
+}
+
+.orders-skeleton-item {
+  width: 100%;
+  height: 140px;
+  background-color: var(--color-gray);
+  border-radius: 0.4rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: var(--color-gray);
+  }
+  50% {
+    background-color: var(--color-black-variant);
+  }
+  100% {
+    background-color: var(--color-gray);
+  }
+}

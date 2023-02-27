@@ -6,8 +6,10 @@ import './styles.css'
 
 const OrdersList = ({ orders }) => {
   return (
-    <div className='orders-list'>
-      {orders.map(order => <OrderItem key={order._id} order={order} />)}
+    <div className="orders-list">
+      {orders.map(order => (
+        <OrderItem key={order._id} order={order} />
+      ))}
     </div>
   )
 }

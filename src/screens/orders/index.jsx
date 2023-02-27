@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { Footer, Navbar, OrdersList } from '../../components'
+import { Footer, Navbar, OrdersList, OrdersSkeleton } from '../../components'
 import { useAuth } from '../../hooks'
 import { ordersServices } from '../../services'
 
@@ -19,30 +19,26 @@ const Orders = () => {
     const fetchOrders = async () => {
       const orders = await ordersServices.getAll(user.email, token)
 
-      setOrders(orders)
+      const sortedOrders = [...orders].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+
+      setOrders(sortedOrders)
       setLoading(false)
     }
 
     fetchOrders()
-  }, [])
+  }, [user.email, token])
 
   return (
     <section className="orders-screen">
       <Navbar />
       <div className="orders-screen-container">
-        <br />
-        <br />
-        <h1>Your Orders</h1>
-        <br />
-        <br />
-
-        <div className="orders-container">
-          {loading ? (
-            <span>Please wait a second, we are getting your orders...</span>
-          ) : (
-            <OrdersList orders={orders} />
-          )}
+        <div className="home-banner">
+          <div className="home-banner__overlay">
+            <h1 className="home-banner__title">Your Orders</h1>
+          </div>
         </div>
+
+        <div className="orders-container">{loading ? <OrdersSkeleton /> : <OrdersList orders={orders} />}</div>
       </div>
       <Footer />
     </section>

@@ -17,7 +17,7 @@ const Detail = () => {
   const { user, token } = useAuth()
   const { dispatch } = useCart()
 
-  const [product, setProduct] = useState([])
+  const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState([])
 
   const [selectedSize, setSelectedSize] = useState(null)

@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+
+import { cardNumberWithSpaces, getCardType, validateExpDate } from '../../utils'
+
 import { Button, Input, Logo, Modal } from '../../components'
 import { ReactComponent as MasterIcon } from '../../assets/master-icon.svg'
 import { ReactComponent as VisaIcon } from '../../assets/visa-icon.svg'
@@ -6,17 +9,7 @@ import { ReactComponent as VisaIcon } from '../../assets/visa-icon.svg'
 import './styles.css'
 
 const BillingModal = ({ open, setOpen, address, card, setAddress, setCard }) => {
-  const cardType = card.number ? (['0', '1', '2', '3', '4'].includes(card.number[0]) ? 'visa' : 'master') : 'none'
-
-  const cardNumberWithSpaces = number => {
-    const arr = number.match(/.{1,4}/g)
-    return arr ? arr.join(' ') : ''
-  }
-
-  const validateExpDate = date => {
-    const re = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/
-    return re.test(date)
-  }
+  const cardType = getCardType(card.number)
 
   const [error, setError] = useState(null)
 
