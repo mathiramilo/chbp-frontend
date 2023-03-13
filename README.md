@@ -1,4 +1,4 @@
-# CHBP Front End
+# CHBP FrontEnd
 
 Footwear e-commerce frontend developed with React for the final project of the Coderhouse Backend Course.
 
@@ -17,7 +17,7 @@ You can see the backend [here](https://github.com/mathiramilo/CHBP-API).
 
 ## App Technical Information
 
-CHBP Footwear front end is developed with React.
+CHBP Footwear frontend is developed with React.
 
 ### Global State Management
 
