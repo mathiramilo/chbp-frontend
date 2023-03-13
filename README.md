@@ -1,6 +1,6 @@
 # CHBP Front End
 
-Footwear e-commerce front end developed with React for the final project of the Coderhouse Backend Course.
+Footwear e-commerce frontend developed with React for the final project of the Coderhouse Backend Course.
 
 You can see the backend [here](https://github.com/mathiramilo/CHBP-API).
 
