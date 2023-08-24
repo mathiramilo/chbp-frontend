@@ -17,7 +17,7 @@ const authServices = {
     } catch (error) {
       const details = error.response.data
 
-      if (details.error.startsWith('E11000')) {
+      if (details?.error?.startsWith('E11000')) {
         throw new Error('The email you entered already exists')
       } else {
         throw new Error('An error occurred. Please try again later')
