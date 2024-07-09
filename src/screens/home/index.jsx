@@ -34,7 +34,7 @@ const Home = () => {
     }
 
     fetchProducts()
-  }, [category])
+  }, [category]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="home">

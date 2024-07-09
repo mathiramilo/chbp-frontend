@@ -9,7 +9,7 @@ import { Footer, Navbar, DetailSkeleton, AddToCartToast } from '../../components
 
 import './styles.css'
 
-const sizes = [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12]
+const SIZES = [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12]
 
 const Detail = () => {
   const { id } = useParams()
@@ -26,7 +26,13 @@ const Detail = () => {
 
   const handleAddToCart = async () => {
     dispatch(addProduct(product, selectedSize))
-    toast.custom(t => <AddToCartToast t={t} product={product} size={selectedSize} />)
+    toast.custom((t) => (
+      <AddToCartToast
+        t={t}
+        product={product}
+        size={selectedSize}
+      />
+    ))
     navigate('/')
     await cartServices.addProduct(user.cartId, product._id, selectedSize, token)
   }
@@ -45,7 +51,7 @@ const Detail = () => {
     }
 
     fetchProduct()
-  }, [id])
+  }, [id]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="detail">
@@ -55,15 +61,27 @@ const Detail = () => {
           <DetailSkeleton />
         ) : (
           <>
-            <button className="detail__goback" onClick={() => navigate(-1)}>
+            <button
+              className="detail__goback"
+              onClick={() => navigate(-1)}
+            >
               <span className="material-symbols-rounded">keyboard_return</span>
               <span>Go back</span>
             </button>
 
             <div className="detail__main">
-              <div className="detail-main__img" data-brand={product.category}>
-                <div className="detail-main-img__overlay" style={{ background: product.color }}></div>
-                <img src={product.imgUrl} alt={product.title} />
+              <div
+                className="detail-main__img"
+                data-brand={product.category}
+              >
+                <div
+                  className="detail-main-img__overlay"
+                  style={{ background: product.color }}
+                ></div>
+                <img
+                  src={product.imgUrl}
+                  alt={product.title}
+                />
               </div>
 
               <div className="detail-main__data">
@@ -79,7 +97,7 @@ const Detail = () => {
                 <div className="detail-main-data__sizes">
                   <span>Size (US)</span>
                   <div className="detail-main-data-sizes__options">
-                    {sizes.map((size, index) => (
+                    {SIZES.map((size, index) => (
                       <button
                         key={index}
                         onClick={() => setSelectedSize(size)}
@@ -91,7 +109,11 @@ const Detail = () => {
                   </div>
                 </div>
 
-                <button className="detail-main-data__btn" disabled={!selectedSize} onClick={handleAddToCart}>
+                <button
+                  className="detail-main-data__btn"
+                  disabled={!selectedSize}
+                  onClick={handleAddToCart}
+                >
                   {selectedSize ? 'Add to cart' : 'Select a size'}
                 </button>
               </div>
