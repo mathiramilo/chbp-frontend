@@ -25,6 +25,8 @@ const Detail = () => {
   const navigate = useNavigate()
 
   const handleAddToCart = async () => {
+    if (!user) return navigate('/login')
+
     dispatch(addProduct(product, selectedSize))
     toast.custom((t) => (
       <AddToCartToast

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useAuth, useCart } from '../../hooks'
+import Button from '../button'
 import UserModal from '../userModal'
 import Logo from '../logo'
 
@@ -40,18 +41,32 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="navbar__buttons">
-              <Link to="/cart">
-                <button className="navbar-buttons__item">
-                  <small>{productsQty}</small>
-                  <span className="material-symbols-rounded">shopping_cart</span>
-                </button>
-              </Link>
-              <button className="navbar-buttons__item" onClick={() => setModalOpen(true)}>
-                <span className="material-symbols-rounded">account_circle</span>
-              </button>
-              <button className="navbar-buttons__item" onClick={handleLogout}>
-                <span className="material-symbols-rounded">logout</span>
-              </button>
+              {user ? (
+                <>
+                  <Link to="/cart">
+                    <button className="navbar-buttons__item">
+                      <small>{productsQty}</small>
+                      <span className="material-symbols-rounded">shopping_cart</span>
+                    </button>
+                  </Link>
+                  <button
+                    className="navbar-buttons__item"
+                    onClick={() => setModalOpen(true)}
+                  >
+                    <span className="material-symbols-rounded">account_circle</span>
+                  </button>
+                  <button
+                    className="navbar-buttons__item"
+                    onClick={handleLogout}
+                  >
+                    <span className="material-symbols-rounded">logout</span>
+                  </button>
+                </>
+              ) : (
+                <Link to="/login">
+                  <Button text="Login/Signup" />
+                </Link>
+              )}
             </div>
           </div>
           <div className="navbar__links mobile">
@@ -68,7 +83,12 @@ const Navbar = () => {
         </div>
       </header>
 
-      <UserModal open={modalOpen} setOpen={setModalOpen} user={user} handleLogout={handleLogout} />
+      <UserModal
+        open={modalOpen}
+        setOpen={setModalOpen}
+        user={user}
+        handleLogout={handleLogout}
+      />
     </>
   )
 }
