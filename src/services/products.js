@@ -9,14 +9,12 @@ const productsServices = {
       category
         ? (response = await axios.get(`${API_URL}/products?category=${category}`, {
             headers: {
-              'Authorization': `Bearer ${token}`,
-              'Referrer-Policy': 'unsafe-url'
+              Authorization: `Bearer ${token}`
             }
           }))
         : (response = await axios.get(`${API_URL}/products`, {
             headers: {
-              'Authorization': `Bearer ${token}`,
-              'Referrer-Policy': 'unsafe-url'
+              Authorization: `Bearer ${token}`
             }
           }))
 
