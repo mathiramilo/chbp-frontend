@@ -69,12 +69,12 @@ const cartServices = {
       throw new Error('An error occurred. Please try again later')
     }
   },
-  checkout: async (cartId, buyer, address, payment, token) => {
+  checkout: async (cartId, buyerId, address, payment, token) => {
     try {
       const response = await axios.post(
         `${API_URL}/cart/${cartId}/checkout`,
         {
-          buyer,
+          buyerId,
           address,
           payment
         },

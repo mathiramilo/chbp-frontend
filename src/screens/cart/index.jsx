@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { toast } from 'react-hot-toast'
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 
-import { setCart } from '../../context/cart/cart.actions'
-
-import { cartServices, productsServices } from '../../services'
 import { useAuth, useCart } from '../../hooks'
-import { showLast4Digits, validCategory, shuffle } from '../../utils'
-
-import { BillingModal, Button, CartList, CheckoutToast } from '../../components'
+import { BillingModal, Button, CartList } from '../../components'
 import { ReactComponent as CheckoutFigure } from '../../assets/checkout-figure.svg'
-import { ReactComponent as MasterIcon } from '../../assets/master-icon.svg'
-import { ReactComponent as VisaIcon } from '../../assets/visa-icon.svg'
 
 import './styles.css'
 import paymentsServices from '../../services/payments'
@@ -24,19 +16,11 @@ const Cart = () => {
   const { user, token } = useAuth()
 
   const [address, setAddress] = useState({
-    fullName: '',
     address: '',
     city: '',
     country: ''
   })
-  const [card, setCard] = useState({
-    number: '',
-    fullName: '',
-    expDate: '',
-    cvv: ''
-  })
 
-  const [loading, setLoading] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const [preferenceId, setPreferenceId] = useState(null)
 
@@ -51,47 +35,6 @@ const Cart = () => {
   useEffect(() => {
     fetchCreatePreference()
   }, [cart]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  // const handleCheckout = async () => {
-  //   const buyerPayload = {
-  //     name: user.fullName,
-  //     email: user.email,
-  //     phone: user.phone
-  //   }
-
-  //   const addressPayload = {
-  //     address: address.address,
-  //     city: address.city,
-  //     country: address.country
-  //   }
-
-  //   const paymentPayload = {
-  //     cardNumber: +card.number,
-  //     cardHolder: card.fullName,
-  //     expirationDate: card.expDate,
-  //     cvv: +card.cvv
-  //   }
-
-  //   setLoading(true)
-
-  //   try {
-  //     const { order } = await cartServices.checkout(user.cartId, buyerPayload, addressPayload, paymentPayload, token)
-  //     const { _id, totalCost } = order
-  //     toast.custom((t) => (
-  //       <CheckoutToast
-  //         t={t}
-  //         orderId={_id}
-  //         total={totalCost}
-  //       />
-  //     ))
-  //     dispatch(await setCart(user.cartId, token))
-  //     navigate('/')
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-
-  //   setLoading(false)
-  // }
 
   return (
     <>
@@ -129,11 +72,10 @@ const Cart = () => {
               {address.address ? (
                 <>
                   <div className="cart-right-item__top">
-                    <h4>{address.fullName}</h4>
+                    <h4>{address.address}</h4>
                     <button onClick={() => setModalOpen(true)}>Edit</button>
                   </div>
                   <div className="cart-right-address__bottom">
-                    <span>{address.address}</span>
                     <span>{address.city}</span>
                     <span>{address.country}</span>
                   </div>
@@ -141,32 +83,6 @@ const Cart = () => {
               ) : (
                 <div className="cart-right-item__top">
                   <h4>Address</h4>
-                  <button onClick={() => setModalOpen(true)}>Add</button>
-                </div>
-              )}
-            </div>
-            <div className="cart-right__payment">
-              {address.address ? (
-                <>
-                  <div className="cart-right-item__top">
-                    <h4>Payment Method</h4>
-                    <button onClick={() => setModalOpen(true)}>Edit</button>
-                  </div>
-                  <div className="cart-right-payment__bottom">
-                    <span>Credit/Debit Card</span>
-                    <div>
-                      <span>{showLast4Digits(card.number)}</span>
-                      {['0', '1', '2', '3', '4'].includes(card.number[0]) ? (
-                        <VisaIcon className="cart-right-payment__icon" />
-                      ) : (
-                        <MasterIcon className="cart-right-payment__icon" />
-                      )}
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <div className="cart-right-item__top">
-                  <h4>Payment Method</h4>
                   <button onClick={() => setModalOpen(true)}>Add</button>
                 </div>
               )}
@@ -210,13 +126,6 @@ const Cart = () => {
                 </Link>
               ) : (
                 preferenceId && <Wallet initialization={{ preferenceId }} />
-                // <Button
-                //   disabled={!address.address || !card.number || loading}
-                //   text={loading ? 'Wait a bit...' : 'Checkout'}
-                //   variant={address.address ? 'principal' : 'disabled'}
-                //   style={{ padding: '1rem 3rem' }}
-                //   onClick={handleCheckout}
-                // />
               )}
             </div>
           </div>
@@ -227,9 +136,7 @@ const Cart = () => {
         open={modalOpen}
         setOpen={setModalOpen}
         address={address}
-        card={card}
         setAddress={setAddress}
-        setCard={setCard}
       />
     </>
   )
