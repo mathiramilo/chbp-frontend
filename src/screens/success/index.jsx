@@ -12,6 +12,8 @@ import './styles.css'
 
 const SEARCH_PARAMS = {
   cartId: 'cartId',
+
+  paymentProvider: 'paymentProvider',
   paymentId: 'payment_id',
   paymentType: 'payment_type',
 
@@ -41,7 +43,7 @@ const Success = () => {
     }
 
     const paymentPayload = {
-      provider: 'mercadopago',
+      provider: searchParams.get(SEARCH_PARAMS.paymentProvider),
       paymentId: searchParams.get(SEARCH_PARAMS.paymentId),
       paymentType: searchParams.get(SEARCH_PARAMS.paymentType)
     }
