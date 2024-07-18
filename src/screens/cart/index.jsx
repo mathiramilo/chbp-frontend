@@ -36,7 +36,7 @@ const Cart = () => {
 
   useEffect(() => {
     fetchCreatePreference()
-  }, [cart]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [cart, address]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

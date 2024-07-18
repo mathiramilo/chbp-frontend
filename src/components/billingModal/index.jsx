@@ -7,20 +7,22 @@ import './styles.css'
 const BillingModal = ({ open, setOpen, address, setAddress }) => {
   const [error, setError] = useState(null)
 
-  const handleAddressChange = (e) => {
-    const { name, value } = e.target
-    setAddress((prevState) => ({ ...prevState, [name]: value }))
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!address.address || !address.city || !address.country) {
+    const { address, city, country } = e.target
+
+    if (!address || !city || !country) {
       setError('Please check that all fields are filled in correctly')
       setTimeout(() => setError(null), 5000)
       return
     }
 
+    setAddress({
+      address: address.value,
+      city: city.value,
+      country: country.value
+    })
     setOpen(false)
   }
 
@@ -42,22 +44,19 @@ const BillingModal = ({ open, setOpen, address, setAddress }) => {
               icon="home_pin"
               placeholder="Address"
               name="address"
-              value={address.address}
-              onChange={handleAddressChange}
+              defaultValue={address.address}
             />
             <Input
               icon="location_city"
               placeholder="City"
               name="city"
-              value={address.city}
-              onChange={handleAddressChange}
+              defaultValue={address.city}
             />
             <Input
               icon="public"
               placeholder="Country"
               name="country"
-              value={address.country}
-              onChange={handleAddressChange}
+              defaultValue={address.country}
             />
           </div>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
@@ -33,8 +33,8 @@ const Success = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const qty = useMemo(productsQty, []) // eslint-disable-line react-hooks/exhaustive-deps
-  const total = useMemo(getTotal(), []) // eslint-disable-line react-hooks/exhaustive-deps
+  const qty = productsQty
+  const total = getTotal()
 
   const handleCheckout = async () => {
     const cartId = searchParams.get(SEARCH_PARAMS.cartId)
