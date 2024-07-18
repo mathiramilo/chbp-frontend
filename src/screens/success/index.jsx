@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useSearchParams, useNavigate, Link } from 'react-router-dom'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { setCart } from '../../context/cart/cart.actions'
@@ -33,7 +33,11 @@ const Success = () => {
 
   const [loading, setLoading] = useState(false)
 
+  const qty = useMemo(productsQty, []) // eslint-disable-line react-hooks/exhaustive-deps
+  const total = useMemo(getTotal(), []) // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleCheckout = async () => {
+    const cartId = searchParams.get(SEARCH_PARAMS.cartId)
     const buyerId = searchParams.get(SEARCH_PARAMS.buyerId)
 
     const addressPayload = {
@@ -51,7 +55,7 @@ const Success = () => {
     setLoading(true)
 
     try {
-      const { order } = await cartServices.checkout(user.cartId, buyerId, addressPayload, paymentPayload, token)
+      const { order } = await cartServices.checkout(cartId, buyerId, addressPayload, paymentPayload, token)
       const { _id, totalCost } = order
       toast.custom((t) => (
         <CheckoutToast
@@ -77,8 +81,8 @@ const Success = () => {
       <Navbar />
       <div className="success-container">
         <h1>Order Received!</h1>
-        <span>{productsQty} items</span>
-        <span>Total: ${getTotal()}</span>
+        <span>{qty} items</span>
+        <span>Total: ${total}</span>
         <span>Shipping to:</span>
         <span>{searchParams.get(SEARCH_PARAMS.address)}</span>
         <span>{searchParams.get(SEARCH_PARAMS.city)}</span>

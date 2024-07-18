@@ -30,6 +30,8 @@ const Cart = () => {
     const preference = await paymentsServices.createPreference(user.cartId, user._id, address, token)
 
     setPreferenceId(preference.id)
+
+    console.log(address)
   }
 
   useEffect(() => {
