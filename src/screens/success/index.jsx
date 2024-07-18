@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams, useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { setCart } from '../../context/cart/cart.actions'
@@ -61,7 +61,6 @@ const Success = () => {
         />
       ))
       dispatch(await setCart(user.cartId, token))
-      navigate('/')
     } catch (error) {
       console.log(error)
     }
@@ -91,6 +90,7 @@ const Success = () => {
         <Button
           text={loading ? 'Wait a second please...' : 'Go to home'}
           disabled={loading}
+          onClick={loading ? () => {} : () => navigate('/')}
         />
       </div>
       <Footer />
