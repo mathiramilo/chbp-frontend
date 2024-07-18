@@ -224,8 +224,7 @@
 
 .cart-right__total {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   gap: 0.8rem;
 }
 
@@ -245,6 +244,10 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-black);
+}
+
+#walletBrick_container span {
+  color: var(--color-white);
 }
 
 @media screen and (min-width: 1024px) {

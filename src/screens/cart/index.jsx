@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 
 import { setCart } from '../../context/cart/cart.actions'
 
-import { cartServices } from '../../services'
+import { cartServices, productsServices } from '../../services'
 import { useAuth, useCart } from '../../hooks'
-import { showLast4Digits } from '../../utils'
+import { showLast4Digits, validCategory, shuffle } from '../../utils'
 
 import { BillingModal, Button, CartList, CheckoutToast } from '../../components'
 import { ReactComponent as CheckoutFigure } from '../../assets/checkout-figure.svg'
@@ -14,8 +15,11 @@ import { ReactComponent as MasterIcon } from '../../assets/master-icon.svg'
 import { ReactComponent as VisaIcon } from '../../assets/visa-icon.svg'
 
 import './styles.css'
+import paymentsServices from '../../services/payments'
 
 const Cart = () => {
+  initMercadoPago(process.env.REACT_APP_MP_PUBLIC_KEY)
+
   const { cart, dispatch, productsQty, getSubtotal, getTotal } = useCart()
   const { user, token } = useAuth()
 
@@ -33,53 +37,75 @@ const Cart = () => {
   })
 
   const [loading, setLoading] = useState(false)
-
   const [modalOpen, setModalOpen] = useState(false)
+  const [preferenceId, setPreferenceId] = useState(null)
 
   const navigate = useNavigate()
 
-  const handleCheckout = async () => {
-    const buyerPayload = {
-      name: user.fullName,
-      email: user.email,
-      phone: user.phone
-    }
+  const fetchCreatePreference = async () => {
+    const preference = await paymentsServices.createPreference(user.cartId, user, address, token)
 
-    const addressPayload = {
-      address: address.address,
-      city: address.city,
-      country: address.country
-    }
-
-    const paymentPayload = {
-      cardNumber: +card.number,
-      cardHolder: card.fullName,
-      expirationDate: card.expDate,
-      cvv: +card.cvv
-    }
-
-    setLoading(true)
-
-    try {
-      const { order } = await cartServices.checkout(user.cartId, buyerPayload, addressPayload, paymentPayload, token)
-      const { _id, totalCost } = order
-      toast.custom(t => <CheckoutToast t={t} orderId={_id} total={totalCost} />)
-      dispatch(await setCart(user.cartId, token))
-      navigate('/')
-    } catch (error) {
-      console.log(error)
-    }
-
-    setLoading(false)
+    setPreferenceId(preference.id)
   }
+
+  useEffect(() => {
+    fetchCreatePreference()
+  }, [cart]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // const handleCheckout = async () => {
+  //   const buyerPayload = {
+  //     name: user.fullName,
+  //     email: user.email,
+  //     phone: user.phone
+  //   }
+
+  //   const addressPayload = {
+  //     address: address.address,
+  //     city: address.city,
+  //     country: address.country
+  //   }
+
+  //   const paymentPayload = {
+  //     cardNumber: +card.number,
+  //     cardHolder: card.fullName,
+  //     expirationDate: card.expDate,
+  //     cvv: +card.cvv
+  //   }
+
+  //   setLoading(true)
+
+  //   try {
+  //     const { order } = await cartServices.checkout(user.cartId, buyerPayload, addressPayload, paymentPayload, token)
+  //     const { _id, totalCost } = order
+  //     toast.custom((t) => (
+  //       <CheckoutToast
+  //         t={t}
+  //         orderId={_id}
+  //         total={totalCost}
+  //       />
+  //     ))
+  //     dispatch(await setCart(user.cartId, token))
+  //     navigate('/')
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+
+  //   setLoading(false)
+  // }
 
   return (
     <>
       <section className="cart-container">
-        <div className="cart">
+        <div
+          id="wallet_container"
+          className="cart"
+        >
           <div className="cart-left">
             <div className="cart-left__return">
-              <button className="detail__goback" onClick={() => navigate(-1)}>
+              <button
+                className="detail__goback"
+                onClick={() => navigate(-1)}
+              >
                 <span className="material-symbols-rounded">keyboard_return</span>
                 <span>Continue Shopping</span>
               </button>
@@ -92,7 +118,10 @@ const Cart = () => {
                 <span>{productsQty} items</span>
               </div>
 
-              <CartList cart={cart} dispatch={dispatch} />
+              <CartList
+                cart={cart}
+                dispatch={dispatch}
+              />
             </div>
           </div>
           <div className="cart-right">
@@ -146,7 +175,10 @@ const Cart = () => {
               <h4>Do you have any discount code?</h4>
               <span>Only one discount code per order can be applied</span>
               <div>
-                <input type="text" placeholder="Your code here" />
+                <input
+                  type="text"
+                  placeholder="Your code here"
+                />
                 <button>Apply</button>
               </div>
             </div>
@@ -171,16 +203,20 @@ const Cart = () => {
               </div>
               {productsQty === 0 ? (
                 <Link to="/">
-                  <Button text="Look Sneakers" style={{ padding: '1rem 3rem' }} />
+                  <Button
+                    text="Look Sneakers"
+                    style={{ padding: '1rem 3rem' }}
+                  />
                 </Link>
               ) : (
-                <Button
-                  disabled={!address.address || !card.number || loading}
-                  text={loading ? 'Wait a bit...' : 'Checkout'}
-                  variant={address.address ? 'principal' : 'disabled'}
-                  style={{ padding: '1rem 3rem' }}
-                  onClick={handleCheckout}
-                />
+                preferenceId && <Wallet initialization={{ preferenceId }} />
+                // <Button
+                //   disabled={!address.address || !card.number || loading}
+                //   text={loading ? 'Wait a bit...' : 'Checkout'}
+                //   variant={address.address ? 'principal' : 'disabled'}
+                //   style={{ padding: '1rem 3rem' }}
+                //   onClick={handleCheckout}
+                // />
               )}
             </div>
           </div>

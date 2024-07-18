@@ -8,7 +8,10 @@ import {
   CartScreen,
   DetailScreen,
   OrdersScreen,
-  OrderDetailScreen
+  OrderDetailScreen,
+  SuccessScreen,
+  FailureScreen,
+  PendingScreen
 } from '../screens'
 
 const AppRoutes = () => {
@@ -43,6 +46,18 @@ const AppRoutes = () => {
       <Route
         path="/orders/:id"
         element={user ? <OrderDetailScreen /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/success"
+        element={user ? <SuccessScreen /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/failure"
+        element={user ? <FailureScreen /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/pending"
+        element={user ? <PendingScreen /> : <Navigate to="/login" />}
       />
       <Route
         path="*"
