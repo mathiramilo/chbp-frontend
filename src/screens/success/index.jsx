@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
@@ -33,8 +33,8 @@ const Success = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const qty = productsQty
-  const total = getTotal()
+  const qtyRef = useRef()
+  const totalRef = useRef()
 
   const handleCheckout = async () => {
     const cartId = searchParams.get(SEARCH_PARAMS.cartId)
@@ -73,6 +73,9 @@ const Success = () => {
   }
 
   useEffect(() => {
+    qtyRef.current = productsQty
+    totalRef.current = getTotal()
+
     handleCheckout()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -81,8 +84,8 @@ const Success = () => {
       <Navbar />
       <div className="success-container">
         <h1>Order Received!</h1>
-        <span>{qty} items</span>
-        <span>Total: ${total}</span>
+        <span>{qtyRef.current} items</span>
+        <span>Total: ${totalRef.current}</span>
         <span>Shipping to:</span>
         <span>{searchParams.get(SEARCH_PARAMS.address)}</span>
         <span>{searchParams.get(SEARCH_PARAMS.city)}</span>
