@@ -27,7 +27,7 @@ const Cart = () => {
   const navigate = useNavigate()
 
   const fetchCreatePreference = async () => {
-    const preference = await paymentsServices.createPreference(user.cartId, user, address, token)
+    const preference = await paymentsServices.createPreference(user.cartId, user._id, address, token)
 
     setPreferenceId(preference.id)
   }

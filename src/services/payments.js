@@ -2,13 +2,13 @@ import axios from 'axios'
 import { API_URL } from '../config'
 
 const paymentsServices = {
-  createPreference: async (cartId, buyer, address, token) => {
+  createPreference: async (cartId, buyerId, address, token) => {
     try {
       const response = await axios.post(
         `${API_URL}/payments/create-preference`,
         {
           cartId,
-          buyer,
+          buyerId,
           address
         },
         {
